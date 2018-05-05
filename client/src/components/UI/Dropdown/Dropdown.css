@@ -1,0 +1,24 @@
+.Dropdown {
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  max-width: 100%;
+  width: 700px;
+  height: 350px;
+  box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3),
+              8px 8px 40px rgba(0, 0, 0, 0.2);
+
+  transition: all .3s;
+}
+
+.Hide {
+  opacity: 0;
+  transform: translate(-50%, -100vh);
+}
+

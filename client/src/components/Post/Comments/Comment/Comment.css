@@ -1,0 +1,48 @@
+.Comment {
+  width: 90%;
+  margin: 40px auto;
+}
+
+.Comment img {
+  float: left;
+  height: 100%;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.Comment header {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Comment header > * > * {  
+  display: inline;
+}
+
+.Comment header span {
+  color: #555;
+  font-size: 12px
+}
+
+
+.Content {
+  margin-left: 60px;
+}
+
+.Like > * {
+  display: inline;
+  font-size: 14px;
+}
+
+.since{
+  color: #555;
+  font-size: 12px;
+}
+
+.text {
+  color: #555;
+  margin: 5px 0;
+  font-size: 14px;
+}

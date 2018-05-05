@@ -4,9 +4,6 @@ postSchema = mongoose.Schema({
 		title: {
 			type: String, required: true
 		},
-		text: {
-			type: String
-		},
 		imageURL: {
 			type: String, 
 			required: true

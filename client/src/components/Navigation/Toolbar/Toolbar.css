@@ -1,0 +1,28 @@
+.Toolbar {
+  position:fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  width: 100%;
+  min-width: 400px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #83a792;
+  padding: 0 20px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4),
+              0 6px 20px rgba(0, 0, 0, 0.2);    
+}
+
+.DesktopOnly {
+  height: 100%;
+}
+
+@media (max-width: 499px) {
+  .DesktopOnly {
+    display: none;
+  }
+}

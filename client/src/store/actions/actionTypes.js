@@ -1,0 +1,3 @@
+export const POST_LIKE = 'POST_LIKE';
+export const POST_LIKE_COMMENT = 'POST_LIKE_COMMENT';
+export const POST_ADD_COMMENT = 'POST_ADD_COMMENT'; 

@@ -1,0 +1,87 @@
+.Post {
+  padding: 20px;
+}
+
+.Post header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+
+.Post header h2 {
+  margin: 0;
+}
+
+.Post header h2 a,
+.Post header h2 a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.Post header h2 a:hover {
+  color: #7c91d4;
+}
+
+.Post header p{
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+
+
+.Post .author {
+  margin-left: 20px;
+  font-size: 0.8rem;
+}
+
+.Post .author a,
+.Post .author a:visited {
+  color: inherit;
+}
+
+.Post .author a:hover {
+  color: #111;
+}
+
+.Post img {
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+
+.Post footer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: red;
+}
+
+.Post footer p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #555 
+}
+
+.Post footer p a,
+.Post footer p a:visited {
+  color: inherit; 
+}
+
+.Post footer p a:hover {
+  color: #111;
+}
+
+.Post .tags a {
+  margin-right: 5px;
+}
+
+@media (max-width: 499px) {
+  .Post img {
+    width: 100%;
+  }
+}
