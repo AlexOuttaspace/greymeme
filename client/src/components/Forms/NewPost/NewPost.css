@@ -1,0 +1,36 @@
+.Form {
+  width: 100%;
+}
+
+.Form h2 {
+  margin-top: 0;
+  margin-left: 5px;
+  font-weight: 300;
+}
+
+
+.Form input {
+  display: block;
+  width: 100%;
+  margin: 20px auto;
+  border: none;
+  outline: none;
+  padding: 8px 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-bottom: 1px solid rgb(156, 255, 126);
+  transition: border .3s;
+}
+
+.Form input:focus {
+  border-bottom: 1px solid rgb(75, 172, 75);
+}
+
+.Buttons {
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+  font-weight: 300;
+}
+

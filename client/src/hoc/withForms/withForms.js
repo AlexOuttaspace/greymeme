@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import {withRouter} from 'react-router-dom';
 import Dropdown from '../../components/UI/Dropdown/Dropdown';
+import NewPost from '../../components/Forms/NewPost/NewPost';
+
 
 const withForms = WrappedComponent => {
   return withRouter (
@@ -21,7 +23,12 @@ const withForms = WrappedComponent => {
         switch (formType) {
           case 'uploadPost':
             form = (
-              <div>Hello im a new post form</div>
+              <NewPost />
+            )
+            break;
+          case 's':
+            form = (
+              <div>Test</div>
             )
             break;
           default:
@@ -31,7 +38,7 @@ const withForms = WrappedComponent => {
         return  (
           <Fragment>
             <Dropdown show={!!form} closeDropdown={this.closeFormHandler} >
-              <button onClick={this.closeFormHandler}>X</button>
+              
               {form}
             </Dropdown>
 
@@ -44,6 +51,8 @@ const withForms = WrappedComponent => {
 }
  
 export default withForms;
+
+
 
 function parseQuery(queryString) {
   var query = {};

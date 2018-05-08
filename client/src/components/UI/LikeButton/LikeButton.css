@@ -1,17 +1,13 @@
-.icon {
+.Icon {
   position: relative;
   top: 2px;
   font-size: 1.4rem;
   margin-left: 5px;
-}
-
-.notLiked,
-.liked:hover {
-  color: rgb(128, 128, 128);
   cursor: pointer;
+  color: rgb(128, 128, 128);
+  transition: color .2s;
 }
 
-.liked,
-.notLiked:hover {
+.liked {
   color: rgb(161, 228, 167);
 }

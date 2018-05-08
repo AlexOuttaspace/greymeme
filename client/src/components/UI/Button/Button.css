@@ -1,0 +1,23 @@
+.Button {
+  border: none;
+  padding: 5px 15px;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+}
+
+.Success {
+  background: rgb(121, 202, 121);
+}
+
+.Success:hover {
+  background: rgb(99, 170, 99);
+}
+
+.Danger {
+  background: rgb(155, 79, 79);
+}
+
+.Danger:hover {
+  background: rgb(105, 61, 61);
+}

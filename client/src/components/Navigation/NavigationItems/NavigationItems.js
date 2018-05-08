@@ -16,7 +16,7 @@ const navigationItems = props => {
         Main
       </NavigationItem>
       <NavigationItem 
-        to={`${props.location.pathname}/?form=uploadPost`}
+        to={`${props.location.pathname}?form=uploadPost`}
         clicked={props.sideDrawerClosed}
       > 
         Upload

@@ -5,7 +5,7 @@ import Layout from './components/Layout/Layout';
 import Feed from './containers/Feed/Feed';
 import FullPost from './containers/FullPost/FullPost';
 import Dropdown from './components/UI/Dropdown/Dropdown';
-import withForms from './hoc/withForms/withForms';
+import Forms from './components/Forms/Forms';
 
 
 // FONT AWESOME SETUP
@@ -21,6 +21,7 @@ class App extends Component {
   render() {
     return (
       <Layout>
+        <Forms />
         <Dropdown 
           show={this.state.showDropdown}
           toggleDropdown={this.toggleDropdownHandler}
@@ -40,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default withForms(App);
+export default App;

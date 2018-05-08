@@ -10,15 +10,31 @@
   background-color: white;
   max-width: 100%;
   width: 700px;
-  height: 350px;
   box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.3),
               8px 8px 40px rgba(0, 0, 0, 0.2);
 
   transition: all .3s;
 }
 
+/* 100% - height of the window, 50px - to hide shadow */
 .Hide {
-  opacity: 0;
-  transform: translate(-50%, -100vh);
+  opacity: 1;
+  transform: translate(-50%, calc(-100% - 50vh - 50px));
+}
+
+.Cross {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.Cross:hover{
+  background-color: #eee;
 }
 

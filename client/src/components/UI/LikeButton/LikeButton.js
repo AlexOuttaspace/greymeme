@@ -6,9 +6,9 @@ import classes from './LikeButton.css'
 
 const likeButton = props => {
   const iconClasses = [
-    classes.icon,
-    props.liked ? classes.liked : classes.notLiked
-  ]
+    classes.Icon,
+    props.liked ? classes.liked : null
+  ];
 
   return (
     <FontAwesomeIcon
@@ -16,7 +16,7 @@ const likeButton = props => {
       className={iconClasses.join(' ')}
       icon='heart'
     />
-  )
+  );
 }
  
 export default likeButton;
