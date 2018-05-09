@@ -16,6 +16,7 @@ const input = props => {
         value={props.value}
         className={assignedClasses.join(' ')}
         onChange={props.changed}
+        autoComplete='off'
       />;
       break;
     default:
@@ -24,7 +25,7 @@ const input = props => {
   return (
     <Fragment>
       {input}
-      <span>{props.validationMessage}</span>
+      <span className={classes.Validation}>{props.validationMessage}</span>
     </Fragment>
   )
 }

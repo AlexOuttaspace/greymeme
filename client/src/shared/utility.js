@@ -21,27 +21,29 @@ export const validate = (input, rules) => {
   
   let validateMessage = '';
 
+  // check if input contains anything
+  if (rules.required && input.trim() === '') {
+    validateMessage += 'This input is required. ';
+  }
+
   // check if input is email
   if (rules.isEmail) {
     const emailPattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     if (!emailPattern.test(input)) {
-      validateMessage += 'This email is incorrect. ';
+      validateMessage += 'Email incorrect. ';
     }
   }
 
 
-  // check if input contains anything
-  if (rules.required && input.trim() === '') {
-    validateMessage += 'This input is required';
-  }
+  
 
   // check input length
   if (rules.minLength && input.length <=rules.minLength ) {
-    validateMessage += `Should conteint  more than ${rules.minLength} characters`
+    validateMessage += `Should be more than ${rules.minLength} characters. `
   }
 
   if (rules.maxLength && input.length >=rules.maxLength) {
-    validateMessage += `Should contain not more than ${rules.maxLength} characters`
+    validateMessage += `Should be not more than ${rules.maxLength} characters. `
   }
 
 

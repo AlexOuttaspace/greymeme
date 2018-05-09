@@ -30,14 +30,14 @@ class CommentInput extends Component {
   }
 
   commentInputHandler = e => {
-    e.persist();
+    const {name, value} = e.target;
     this.setState(prevState => {
-      const changedInput = {...prevState[e.target.name]}
+      const changedInput = {...prevState[name]}
       return {
         ...prevState, 
-        [e.target.name]:{
+        [name]:{
           ...changedInput, 
-          text: e.target.value
+          text: value
         }
       }
     });

@@ -22,3 +22,11 @@
 .Input.invalid:focus {
   border-bottom-color: red;
 }
+
+.Validation {
+  font-size: 14px;
+  color: salmon;
+  float: left;
+  position: relative;
+  bottom: 15px;
+}

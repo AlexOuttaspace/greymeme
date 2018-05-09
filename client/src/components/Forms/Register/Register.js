@@ -76,48 +76,80 @@ class Login extends Component {
         touched: false
       }
     },
-    formIstValid: false
+    failedToSubmit: false
   }
 
   inputHandler = e => {
     const {name, value} = e.target;
 
-    this.setState(prevState => {
+    this.setState(async (prevState) => {
 
       const updatedInputs = {...prevState.inputs};
       updatedInputs[name].value = value;
       updatedInputs[name].touched = true;
 
-      const inputValidation = validate(
-        updatedInputs[name].value, 
-        updatedInputs[name].validation
-      )
-
-      if (typeof inputValidation === 'string') {
-        updatedInputs[name].valid = false;
-        updatedInputs[name].validationMessage = inputValidation;
-      } else {
-        updatedInputs[name].valid = inputValidation;
-        updatedInputs[name].validationMessage = '';
-      }
       return { inputs: updatedInputs };
-    }, () => this.setState(this.checkFormValidation()));
-  }
-
-  checkFormValidation () {
-    this.setState(prev => {
-      for (let key in this.state.inputs) {
-        console.log(this.state.inputs[key].valid)
-        if (!this.state.inputs[key].valid){
-          return {formIstValid: false};
-        }
+    }, async () => {
+      if (this.state.failedToSubmit) {
+        await this.checkInput(name);
       }
-      return {formIstValid: true};
     });
   }
 
+  checkAllInputs = async () => {
+    let formIsValid = true;
+    let lastValidation = null;
+    for (let name in this.state.inputs) {
+      lastValidation = await this.checkInput(name);
+      if (!lastValidation) {
+        formIsValid = false;
+      }
+    }
+    return formIsValid;
+  }
+
+  checkInput = name => {
+    return new Promise((resolve, reject) => {
+      let isValid = false;
+      this.setState(prev => {
+        const validatedInput = {...prev.inputs[name]};
+        const inputValidation = validate(
+          validatedInput.value, 
+          validatedInput.validation
+        )
+        if (typeof inputValidation === 'string') {
+          validatedInput.valid = false;
+          validatedInput.validationMessage = inputValidation;
+        } else {
+          validatedInput.valid = inputValidation;
+          validatedInput.validationMessage = '';
+        }
+
+        // need this for resolving promise
+        isValid = !!validatedInput.valid;
+  
+        return {
+          ...prev,
+          inputs: {
+            ...prev.inputs,
+            [name]: validatedInput
+          }
+        }
+      }, resolve(isValid));
+    });
+  }
+
+  formSubmitHandler = async e => {
+    e.preventDefault();
+    const validated = await this.checkAllInputs();
+    if (validated) {
+      console.log('sending request! (not really)')
+    } else {
+      this.setState({failedToSubmit: true})
+    }
+  }
+
   render(){
-    console.log(this.state.formIstValid)
     const formElementsArray = [];
     for (let key in this.state.inputs) {
       formElementsArray.push({
@@ -130,20 +162,20 @@ class Login extends Component {
         key={formElement.id}
         type={formElement.input.inputType}
         config={formElement.input.config}
-        valid={formElement.input.valid}
+        valid={formElement.input.valid || !this.state.failedToSubmit}
         changed={this.inputHandler}
         validationMessage={formElement.input.validationMessage}
       />
     ));
 
     return (
-      <form className={classes.Form}>
+      <form noValidate className={classes.Form} onSubmit={this.formSubmitHandler}>
         <h2>Authentication</h2>
         {inputs}
         <div className={classes.Buttons}>
           <Button type='success'>Register</Button>
         </div>
-        <span>{this.state.formIstValid && 'form is valid'}</span>
+        <span>{this.state.formIsValid && 'form is valid'}</span>
       </form>
     );
   }
