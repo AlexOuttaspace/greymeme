@@ -97,11 +97,11 @@ class Login extends Component {
   }
 
   checkAllInputs = async () => {
+    let lastValidationSucceed = false;
     let formIsValid = true;
-    let lastValidation = null;
     for (let name in this.state.inputs) {
-      lastValidation = await this.checkInput(name);
-      if (!lastValidation) {
+      lastValidationSucceed = await this.checkInput(name);
+      if (!lastValidationSucceed) {
         formIsValid = false;
       }
     }
@@ -110,7 +110,6 @@ class Login extends Component {
 
   checkInput = name => {
     return new Promise((resolve, reject) => {
-      let isValid = false;
       this.setState(prev => {
         const validatedInput = {...prev.inputs[name]};
         const inputValidation = validate(
@@ -125,9 +124,6 @@ class Login extends Component {
           validatedInput.validationMessage = '';
         }
 
-        // need this for resolving promise
-        isValid = !!validatedInput.valid;
-  
         return {
           ...prev,
           inputs: {
@@ -135,13 +131,14 @@ class Login extends Component {
             [name]: validatedInput
           }
         }
-      }, resolve(isValid));
+      }, () => resolve(this.state.inputs[name].valid));
     });
   }
 
   formSubmitHandler = async e => {
     e.preventDefault();
     const validated = await this.checkAllInputs();
+
     if (validated) {
       console.log('sending request! (not really)')
     } else {
