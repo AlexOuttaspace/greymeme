@@ -25,7 +25,7 @@ const input = props => {
   return (
     <Fragment>
       {input}
-      <span className={classes.Validation}>{props.validationMessage}</span>
+      <div className={classes.Validation}>{props.validationMessage}</div>
     </Fragment>
   )
 }

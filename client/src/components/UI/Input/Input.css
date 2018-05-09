@@ -1,13 +1,13 @@
 .Input {
   display: block;
   width: 100%;
-  margin: 20px auto;
+  margin: 25px auto 0;
   border: none;
   outline: none;
   padding: 8px 5px;
   box-sizing: border-box;
   font-size: 16px;
-  border-bottom: 1px solid rgb(156, 255, 126);
+  border-bottom: 2px solid rgb(156, 255, 126);
   transition: border .3s;
 }
 
@@ -26,7 +26,5 @@
 .Validation {
   font-size: 14px;
   color: salmon;
-  float: left;
-  position: relative;
-  bottom: 15px;
+  height: 0;
 }
