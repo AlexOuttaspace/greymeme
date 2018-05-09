@@ -21,6 +21,18 @@ const navigationItems = props => {
       > 
         Upload
       </NavigationItem>
+      <NavigationItem 
+        to={`${props.location.pathname}?form=login`}
+        clicked={props.sideDrawerClosed}
+      > 
+        Login
+      </NavigationItem>
+      <NavigationItem 
+        to={`${props.location.pathname}?form=register`}
+        clicked={props.sideDrawerClosed}
+      > 
+        Register
+      </NavigationItem>
     </ul>
   )
 }

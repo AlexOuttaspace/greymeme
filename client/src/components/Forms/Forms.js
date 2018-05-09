@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 
+import {parseQuery} from '../../shared/utility';
+
 import Dropdown from '../UI/Dropdown/Dropdown';
+
 import NewPost from './NewPost/NewPost';
+import Login from './Login/Login';
+import Register from './Register/Register';
 
 class Forms extends Component {
   state = {
@@ -40,14 +45,13 @@ class Forms extends Component {
 
     switch (this.state.formType) {
       case 'uploadPost':
-        form = (
-          <NewPost />
-        )
+        form = <NewPost />
         break;
-      case 's':
-        form = (
-          <div>Test</div>
-        )
+      case 'login':
+        form = <Login />
+        break;
+      case 'register':
+        form = <Register />
         break;
       default:
         break;
@@ -62,16 +66,3 @@ class Forms extends Component {
 }
 
 export default withRouter(Forms);
-
-
-
-function parseQuery(queryString) {
-  var query = {};
-  var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString)
-    .split('&');
-  for (var i = 0; i < pairs.length; i++) {
-      var pair = pairs[i].split('=');
-      query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
-  }
-  return query;
-}

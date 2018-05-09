@@ -1,0 +1,24 @@
+.Input {
+  display: block;
+  width: 100%;
+  margin: 20px auto;
+  border: none;
+  outline: none;
+  padding: 8px 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-bottom: 1px solid rgb(156, 255, 126);
+  transition: border .3s;
+}
+
+.Input.invalid {
+  border-bottom-color: salmon;
+}
+
+.Input:focus {
+  border-bottom-color: rgb(75, 172, 75);
+}
+
+.Input.invalid:focus {
+  border-bottom-color: red;
+}
