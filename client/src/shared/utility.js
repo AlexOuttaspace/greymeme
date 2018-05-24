@@ -20,7 +20,6 @@ export const validate = (input, rules) => {
   }
   
   let validateMessage = '';
-
   // check if input contains anything
   if (rules.required && input.trim() === '') {
     validateMessage += 'This input is required. ';
@@ -34,9 +33,6 @@ export const validate = (input, rules) => {
     }
   }
 
-
-  
-
   // check input length
   if (rules.minLength && input.length <=rules.minLength ) {
     validateMessage += `Should be more than ${rules.minLength} characters. `
@@ -46,6 +42,14 @@ export const validate = (input, rules) => {
     validateMessage += `Should be not more than ${rules.maxLength} characters. `
   }
 
-
   return validateMessage === '' ? true : validateMessage;
+}
+
+// reduces 'inputs' object
+export const reduceForm = inputs => {
+  const reducedData = {};
+  for (let key in inputs) {
+    reducedData[key] = inputs[key].value;
+  }
+  return reducedData;
 }

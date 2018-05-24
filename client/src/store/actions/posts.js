@@ -1,5 +1,10 @@
 import * as actionTypes from './actionTypes';
 
+export const postUploadStart = (post) => ({
+  type: actionTypes.POST_UPLOAD_START,
+  post
+});
+
 export const postLike = (_id) => ({
   type: actionTypes.POST_LIKE,
   _id

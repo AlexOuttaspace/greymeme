@@ -4,10 +4,9 @@ module.exports.createPost = async function(req, res, next) {
 	try {
 		let newPost = await db.Post.create({
 			title: req.body.title,
-			text: req.body.text,
 			imageURL: req.body.imageURL,
 			user: req.user_id
-		})
+		});
 		
 		// populate newly created post with author's username
 		newPost = await newPost

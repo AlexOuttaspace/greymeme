@@ -45,13 +45,13 @@ class Forms extends Component {
 
     switch (this.state.formType) {
       case 'uploadPost':
-        form = <NewPost />
+        form = <NewPost submited={this.closeFormHandler} />
         break;
       case 'login':
-        form = <Login />
+        form = <Login submited={this.closeFormHandler} />
         break;
       case 'register':
-        form = <Register />
+        form = <Register submited={this.closeFormHandler} />
         break;
       default:
         break;

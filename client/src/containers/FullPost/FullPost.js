@@ -23,9 +23,6 @@ class FullPost extends Component {
           <CommentInput
             commentAdded={this.props.onCommentAdded.bind(null, this.props.post._id)}
           />
-        </Card>
-
-        <Card>
           <Comments
             commentLike={this.props.onCommentLiked.bind(null, this.props.post._id)} 
             comments={this.props.post.comments}

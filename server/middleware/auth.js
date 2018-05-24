@@ -12,6 +12,7 @@ const notAuthErr = {
 
 // make sure user is logged in
 exports.loginRequired = function(req, res, next){
+	console.log(req.body, '[middleware/auth.js]');
 	if (req.user_id) {
 		return next();
 	} else {

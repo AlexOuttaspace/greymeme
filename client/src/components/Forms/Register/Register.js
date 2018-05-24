@@ -18,7 +18,7 @@ class Login extends Component {
           isEmail: true
         },
         config: {
-          type: 'email',
+          type: 'text',
           name: 'email',
           placeholder: 'email',
         },
