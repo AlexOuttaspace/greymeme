@@ -7,13 +7,21 @@ const invalidPass = {
 };
 
 module.exports.signup = async function(req, res, next){
+	console.log(req.body)
 	try {
 		const user = await db.User.create(req.body);
+		console.log(1)
 		const userData = prepareUserData(user);
 		return res.status(200).json(userData)
 	} catch (err) {
+		if (err.name === 'ValidationError') {
+			return next({
+				status: 400,
+				message: 'Invalid input'
+			});
+		}
 		if (err.code === 11000){
-			err.message = 'Sorry, that username/email is already taken';
+			err.message = 'User with this email is already registered';
 		}
 		return next(err);
 	}

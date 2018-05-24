@@ -19,7 +19,7 @@ module.exports.createComment = async function(req, res, next) {
     // return create comment
 		return res.status(200).json(newComment);
 	} catch (err) {
-		next(err);
+		return next(err);
 	}
 }
 

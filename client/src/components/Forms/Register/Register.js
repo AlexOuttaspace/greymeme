@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
+import * as actions from '../../../store/actions/';
 
 import classes from '../Forms.css';
 
 import Button from '../../UI/Button/Button';
 import Input from '../../UI/Input/Input';
 
-import {validate} from '../../../shared/utility';
+import {validate, reduceForm} from '../../../shared/utility';
 
 class Login extends Component {
   state = {
@@ -105,7 +108,7 @@ class Login extends Component {
         formIsValid = false;
       }
     }
-    return formIsValid;
+    return true || formIsValid;
   }
 
   checkInput = name => {
@@ -140,7 +143,8 @@ class Login extends Component {
     const validated = await this.checkAllInputs();
 
     if (validated) {
-      console.log('sending request! (not really)')
+      const user = reduceForm(this.state.inputs);
+      this.props.onRegister(user);
     } else {
       this.setState({failedToSubmit: true})
     }
@@ -178,5 +182,12 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = (state, action) => ({
+  error: state.auth.error
+});
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  onRegister: user => dispatch(actions.registerStart(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

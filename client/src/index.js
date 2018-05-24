@@ -12,6 +12,7 @@ import './index.css';
 import App from './App';
 import postsReducer from './store/reducers/posts';
 import generalReducer from './store/reducers/general';
+import authReducer from './store/reducers/auth';
 
 import registerServiceWorker from './registerServiceWorker';
 
@@ -21,7 +22,8 @@ const composeEnhancers = process.env.NODE_ENV === 'development'
 
 const rootReducer = combineReducers({
   posts: postsReducer,
-  general: generalReducer
+  general: generalReducer,
+  auth: authReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();
